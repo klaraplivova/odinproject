@@ -140,4 +140,20 @@ isEqual = null == undefined; // equal each other
 let isStrictEqual = 0 === false;  // strict equality checks the data types -> outputs false
 isStrictEqual = null === undefined; // different types -> outputs false
 
-console.log(isStrictEqual)
+// Logical operators
+
+//or
+
+if (1 || 0) { // treated as true || false -> outputs "Hi"
+    console.log("Hi")
+}
+
+let hour = 12;
+let isWeekend = true;
+
+if (hour < 10 || hour > 18 || isWeekend) { // it is the weekend
+  console.log("The office is closed."); 
+}
+
+if (!(age >= 14 && age <= 19)) {}
+if (age < 14 && age > 19) {}
