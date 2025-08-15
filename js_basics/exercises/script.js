@@ -110,7 +110,6 @@ split = text8.split(""); // outputs array with single characters
 // boolean
 
 let nameFieldChecked = true; // can be true or false, in this case the name field is checked
-let isGreater = 4 > 1; // outputs true
 
 // null
 
@@ -124,3 +123,21 @@ let age3; // no value assigned -> outputs undefined
 
 typeof age2; // outputs undefined
 typeof 10n; // outputs bigint
+
+// Comparisons
+
+let isGreaterNumber = 4 > 1; // outputs true
+
+let isGreaterString = "Z" > "A"; // outputs true
+isGreaterString = "Bee" > "Be"; // words are compared letter-by-letter Unicode index -> outputs true
+isGreaterString = "a" > "A"; // outputs true
+
+let isGreaterMix = "02" > 1; // strings are automatically converted to numbers if possible -> outputs true
+let isGreaterBoolean = isGreaterString == isGreaterNumber; // converts to 1 == 1 -> outputs true
+
+let isEqual = 0 == false; // regular equality checks doesn't diferentiate between 0 (or empty string) and false -> outputs true
+isEqual = null == undefined; // equal each other
+let isStrictEqual = 0 === false;  // strict equality checks the data types -> outputs false
+isStrictEqual = null === undefined; // different types -> outputs false
+
+console.log(isStrictEqual)
