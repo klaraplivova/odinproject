@@ -204,3 +204,11 @@ if (promptedNumber > 0) {
 } else {
     alert(0);
 }
+
+let result = (a + b < 4) ? 
+    "Below" : "Over";
+
+let message = (login == "Employee") ? "Hello" : // if
+    (login == "Director") ? "Greetings" :  // else if
+    (login == "") ? "No login" : // else if
+    ""; // else
