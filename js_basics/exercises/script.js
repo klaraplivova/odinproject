@@ -212,3 +212,20 @@ let message = (login == "Employee") ? "Hello" : // if
     (login == "Director") ? "Greetings" :  // else if
     (login == "") ? "No login" : // else if
     ""; // else
+
+let f = +prompt("a?", "")
+
+switch (f) {
+    case 0:
+        alert(0);
+        break;
+
+    case 1:
+        alert(1);
+        break;
+        
+    case 2:
+    case 3:
+        alert("2,3");
+        break;
+}
