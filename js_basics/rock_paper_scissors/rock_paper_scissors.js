@@ -14,7 +14,11 @@ function getHumanChoice () {
     return choice
 }
 
-    function playRound (humanChoice, computerChoice) {
+function playGame () {
+    let humanScore = 0;
+    let computerScore = 0;
+
+     function playRound (humanChoice, computerChoice) {
         humanChoice = getHumanChoice().toLowerCase();
         computerChoice = getComputerChoice();
 
@@ -42,3 +46,17 @@ function getHumanChoice () {
         }    
     }  
 
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+
+    if (humanScore === computerScore) {
+        console.log("It's a draw. Play again!")
+    } else if (humanScore > computerScore) {
+        console.log("You won the game!")
+    } else {
+        console.log("You lost the game.")
+    }
+}   
