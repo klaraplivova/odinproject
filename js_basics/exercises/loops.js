@@ -69,14 +69,15 @@ while (i < 3) {
     i++;
 }
 
-let input = prompt("Enter number greater than 100.")
-for (input; input < 100; ) {
-    if (input < 100) {
-        input = prompt("Try again")
-    } else if (input === "") {
-       input = 1010;
-       break;
+let input = prompt("Enter number greater than 100.", 0)
+
+for (input; input <= 100; ) {
+    if (input === ""){ 
+      break;
+    } else if (input < 100) {
+      input = prompt("Try again")
     } else {
-        break;   
+      break;   
     }
 }
+
