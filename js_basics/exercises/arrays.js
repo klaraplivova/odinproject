@@ -180,7 +180,6 @@ let strings = ["Hare", "Krishna", "Hare", "Krishna",
   "Krishna", "Krishna", "Hare", "Hare", ":-O"
 ];
 
-console.log(unique(strings))
 
 // ## Array Cardio Day 1
 
@@ -215,7 +214,6 @@ console.log(unique(strings))
     function bornBefore1500 (arr) {
         return arr.filter(arr => arr.year < 1600 && arr.year >= 1500);
     }
-    console.log(bornBefore1500(inventors))
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
@@ -223,21 +221,25 @@ console.log(unique(strings))
     function firstAndLastNames (arr) {
         return arr.map(arr => `${arr.first} ${arr.last}` )
     }
-    console.log(firstAndLastNames(inventors))
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
     function oldestToYoungest (arr) {
-        return arr.sort((a, b) => a.year - b.year)
+        return arr.sort((a, b) => a.year > b.year ? 1 : -1)
     }
-    console.log(oldestToYoungest(inventors))
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-    function yearsTogether (arr) {
-        return arr.reduce()
+    function yearsTogether (inventor) {
+        return inventor.reduce((total, inventor) => {
+          return total + (inventor.passed - inventor.year)
+        }, 0)
     }
+
     // 5. Sort the inventors by years lived
 
+    function sortedByYear (inventor) {
+      return inventor.sort((a, b) => (a.passed - a.year) > (b.passed - b.year) ? 1 : -1) 
+    }
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
@@ -245,6 +247,64 @@ console.log(unique(strings))
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
+    function sortedByName (person) {
+      return person.sort((lastOne, nextOne) => {
+        const [aLast, aFirst] = lastOne.split(", ");
+        const [bLast, bFirst] = nextOne.split(", ")
+        return aLast > bLast ? 1 : -1;
+      })
+    };
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    function numberOfInstances (vehicle) {
+      return vehicle.reduce((obj, item) => {
+        if (!obj[item]) {
+          obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+      }, {});
+    }
+
+     // ## Array Cardio Day 2
+
+    const people2 = [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 }
+    ];
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+
+    // Some and Every Checks
+    // Array.prototype.some() // is at least one person 19 or older?
+    function isOlder (person) {
+      const currentYear = (new Date()).getFullYear();
+      return person.some((person) => (currentYear - person.year) >= 19);
+    }
+
+    // Array.prototype.every() // is everyone 19 or older?
+    function isEveryoneOlder (person) {
+      return person.every((person) => (new Date()).getFullYear() - person.year >= 19)
+    }
+
+    // Array.prototype.find()
+    // Find is like filter, but instead returns just the one you are looking for
+    // find the comment with the ID of 823423
+    const comment = comments.find((comment) => comment.id === 823423) 
+
+    // Array.prototype.findIndex()
+    // Find the comment with this ID
+    const index = comments.findIndex((comment) => comment.id === 823423)
+    
+    // delete the comment with the ID of 823423
+    comments.splice(index, 1);
